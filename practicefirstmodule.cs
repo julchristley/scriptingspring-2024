@@ -52,6 +52,12 @@ Console.WriteLine(d1);
 
 bool isOrangeTheBestColor = true;
 Console.WriteLine(isOrangeTheBestColor);
+
+int w = 100 + 50;
+Console.WriteLine(w);
+int a = 10;
+a += 5;
+Console.WriteLine(a);
 }
 }
 }
