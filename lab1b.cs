@@ -35,7 +35,7 @@ public void GradeCheck (int examScore) { // int examScore (what the user inputs)
 		Console.WriteLine("Are there any extra credit opportunities? Your Grade is: D"); // if it is greater than or equal to 60, displays text
 	}	else if (examScore >= 50) { // compares user input to check if it is greater than or equal to 50
 		Console.WriteLine("Please talk to your instructor. Your Grade is: F"); // if it is greater than or equal to 50, displays text
-		} else if (examScore <= 50) { // compares user input to check if it is less than or equal to 50
+		} else { // compares user input to check if it is less than or equal to 50
 		Console.WriteLine("Please talk to your instructor. Your Grade is: F"); // if it is less than or equal to 50, displays text
 	}
 	}
