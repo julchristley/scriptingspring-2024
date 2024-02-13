@@ -72,7 +72,7 @@ Console.WriteLine("   ");
 int b= 20, c= 44; 
 Console.WriteLine(b==c); // comparison operators compare operands, expected output is false, because 20 is not equal to 44
 Console.WriteLine(b != c);// expected output is true, b and c are not equal
-Console.WriteLine(b> 10 && c< 30); // logical operators determines the logic between variables and values. this tests if b(20) is greater than 10 and if 44 is less than 30. the expeccted output is false.
+Console.WriteLine(b> 10 && c< 30); // logical operators determines the logic between variables and values. this tests if b(20) is greater than 10 and if 44 is less than 30. the expected output is false.
 int d=60,e=13;
 Console.WriteLine(d&e); //bitwise operators perform operations on values. expected outcome is 12.
 Console.WriteLine(b&c); // expected outcome is 4.
