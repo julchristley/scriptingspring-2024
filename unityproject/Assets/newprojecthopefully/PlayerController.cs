@@ -37,24 +37,22 @@ public class PlayerController : MonoBehaviour
       if(Input.GetKey(KeyCode.RightArrow))
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
       
-      if (!controller.isGrounded)
-      {
-          moveDirection.y -= gravity * Time.deltaTime;
-      } else {
-          moveDirection.y = 0f;
-      }  
+       if(!controller.isGrounded)  //gravity
+       {  
+         //  moveDirection.y -= gravity * Time.deltaTime;
+         transform.Translate(Vector3.down * gravity * Time.deltaTime);
+       }else {
+           moveDirection.y = 0f;
+       }
 
-      controller.Move(moveDirection * Time.deltaTime); /*   --- I think that this bit is the problem. The gravity works when the keys don't
-
-      if (Input.GetButtonDown("Jump") && controller.isGrounded)
-      {
-          isJumping = true;
-      }
-      if (isJumping)
-      {
-          moveDirection.y = jumpForce;
-          isJumping = false;
-        
-      }*/
+       if(Input.GetButtonDown("Jump") && controller.isGrounded)  // conditions for jumping
+       isJumping = true;
+      
+       if (isJumping)   // jumping
+       {
+           moveDirection.y = jumpForce;
+           isJumping = false;
+       } 
+    controller.Move(moveDirection * Time.deltaTime);
     }
 }

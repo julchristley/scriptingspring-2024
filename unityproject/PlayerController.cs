@@ -37,24 +37,7 @@ public class PlayerController : MonoBehaviour
       if(Input.GetKey(KeyCode.RightArrow))
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
       
-      if (!controller.isGrounded)
-      {
-           moveDirection.y -= gravity * Time.deltaTime;
-      } else {
-          moveDirection.y = 0f;
-      }
-
-     // controller.Move(moveDirection * Time.deltaTime);
-
-      if (Input.GetButtonDown("Jump"))
-      {
-          isJumping = true;
-      }
-      if (isJumping)
-      {
-          moveDirection.y = jumpForce;
-          isJumping = false;
-        
-      }
+     // if(Input.GetButtonDown("Jump") && controller.isGrounded)
+       // isJumping = true;
     }
 }
