@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 3bca7e9e1bbc9044fb27af4bc049f716
+  productGUID: 300d9a8ebe29a864cb7b8ea619416438
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -752,10 +752,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 6f584f02-bc32-445b-b97a-3ba1a534aea3
+  cloudProjectId: 9148da88-9c37-4c8d-88a3-c49dffad4c82
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Prototype 2
+  projectName: Prototype 2 2024-03-04_20-42-06
   organizationId: juliettechristley
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
