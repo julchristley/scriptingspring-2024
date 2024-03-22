@@ -17,7 +17,8 @@ public class PlayerControllerX : MonoBehaviour
     public AudioClip moneySound;
     public AudioClip explodeSound;
 
-    public float maxHeight = 14.5f;
+    public float maxHeight = 15.0f;
+    public float minHeight = 0.1f;
     public bool isLowEnough = true;
 
     // Start is called before the first frame update
@@ -35,7 +36,7 @@ public class PlayerControllerX : MonoBehaviour
     // Update is called once per frameS
     void Update()
     {
-        Boundaries();
+        Constraints();
 
         // While space is pressed and player is low enough, float up
         if (Input.GetKey(KeyCode.Space) && !gameOver && isLowEnough)
@@ -43,11 +44,21 @@ public class PlayerControllerX : MonoBehaviour
             playerRb.AddForce(Vector3.up * floatForce);
         }
     }
-
-    void Boundaries()
+    
+    //keeping balloon in bounds
+    void Constraints()
     {
       float balloonHeight = transform.position.y;
-      isLowEnough = balloonHeight <= maxHeight;
+      isLowEnough = balloonHeight < maxHeight;
+
+      if (balloonHeight > maxHeight)
+      {
+          transform.position = new Vector3(transform.position.x, maxHeight, transform.position.z);
+      }
+      else if(balloonHeight < minHeight)
+      {
+          transform.position = new Vector3(transform.position.x, minHeight, transform.position.z);
+      }
     }
 
     private void OnCollisionEnter(Collision other)
