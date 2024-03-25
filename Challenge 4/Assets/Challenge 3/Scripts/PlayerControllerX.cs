@@ -53,11 +53,11 @@ public class PlayerControllerX : MonoBehaviour
 
       if (balloonHeight > maxHeight)
       {
-          transform.position = new Vector3(transform.position.x, maxHeight, transform.position.z);
+        transform.position = new Vector3(transform.position.x, maxHeight, transform.position.z);
       }
       else if(balloonHeight < minHeight)
       {
-          transform.position = new Vector3(transform.position.x, minHeight, transform.position.z);
+        transform.position = new Vector3(transform.position.x, minHeight, transform.position.z);
       }
     }
 

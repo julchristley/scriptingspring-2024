@@ -891,7 +891,7 @@ GameObject:
   - component: {fileID: 1292757555}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1028,7 +1028,8 @@ MonoBehaviour:
   fireworksParticle: {fileID: 66121944}
   moneySound: {fileID: 8300000, guid: af9f934eb4288464eb120a5857921cc3, type: 3}
   explodeSound: {fileID: 8300000, guid: 774ebc5c074ce4695b7cc310fbd44087, type: 3}
-  maxHeight: 14.5
+  maxHeight: 15
+  minHeight: 1
   isLowEnough: 1
 --- !u!1001 &2097113909
 PrefabInstance:
@@ -1165,7 +1166,7 @@ GameObject:
   - component: {fileID: 1984236390720035106}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1256,8 +1257,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.46895948, y: 0.6567495, z: 0.49309254}
-  m_Center: {x: 0, y: 0.5957593, z: -0.000000029802322}
+  m_Size: {x: 0.46895948, y: 1.8612897, z: 0.49309254}
+  m_Center: {x: 0, y: -0.006510854, z: -0.000000029802322}
 --- !u!114 &1254969024778041368
 MonoBehaviour:
   m_ObjectHideFlags: 0
