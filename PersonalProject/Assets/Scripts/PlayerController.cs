@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-    public float speed = 5.0f; 
+    //playermovement
+    public float speed = 4.0f; 
     public float horizontalInput;
     public float verticalInput;
     private Rigidbody playerRb;
-    public float xRange = -13.6f;
+
+    //player constraints
+    public float xRange = -9.0f;
+
+    //projectiles
     public GameObject projectilePrefab;
-    public float topBound = 10.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +33,12 @@ public class PlayerController : MonoBehaviour
         // running functions
         MovePlayer();
         ConstrainPlayerPosition();
-        Projectile();
-        Destroy();
+
+        //launch projectile
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+          Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        }
      }
 
     void MovePlayer()
@@ -48,21 +55,5 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
-    }
-
-    void Projectile()
-    {
-      if (Input.GetKeyDown(KeyCode.Space))
-      {
-          Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
-      }
-    }
-
-    void Destroy()
-    {
-      if(transform.position.z > topBound)
-      {
-        Destroy(gameObject);
-      }
     }
 }
