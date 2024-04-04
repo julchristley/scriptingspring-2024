@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject ghostPrefab;
+     public GameObject ghostPrefab ; 
 
     //where to spawn
     private float spawnPosX = -8.0f;
-    private float spawnPosY = 0.6;
+    private float spawnPosY = 0.6f;
     private float spawnPosMinZ = -3.8f;
     private float spawnPosMaxZ = -5.8f;
 
-    public int waveNumber = 1;
+    public int waveNumber = 2;
     public int ghostCount;
 
     // Start is called before the first frame update
@@ -24,7 +24,8 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ghostCount = FindObjectsOfType<Ghost>().Length;
+        // finding Ghost Prefab
+        ghostCount =  GameObject.FindGameObjectsWithTag("Ghost").Length;
 
         if (ghostCount == 0)
         {
