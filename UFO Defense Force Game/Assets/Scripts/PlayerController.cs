@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float xRange = 20.0f;
     public Transform blaster;
     public GameObject lazer;
+    public bool hasPickup = false;
 
     // Update is called once per frame
     void Update()
@@ -40,6 +41,11 @@ public class PlayerController : MonoBehaviour
     // delete any object that hits the player 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
+            Destroy(other.gameObject);
+            if (other.CompareTag("Pickup"))
+            {
+                hasPickup = true;
+                Debug.Log("Pickup collected");
+            }
     }
 }
