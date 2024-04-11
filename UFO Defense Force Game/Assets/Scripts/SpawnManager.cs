@@ -6,19 +6,36 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject pickupPrefab;
     public float spawnRange = 22.0f;
-    private float startDelay = 5;
+    private float startDelayPickup = 5;
     private float repeatRate = 8;
+   
+    public GameObject [] ufoPrefabs; // array for UFO ships
+    private float spawnRangeX = 20f;
+    private float spawnPosZ = 20f;
+
+    private float startDelay = 2f;
+    private float spawnInterval = 1.5f;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("spawnPickup", startDelay, repeatRate);
+        InvokeRepeating("spawnPickup", startDelayPickup, repeatRate);
+        InvokeRepeating("SpawnRandomUFO", startDelay, spawnInterval);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+
+    void SpawnRandomUFO()
+    {
+        Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ); //randomizes spawn location
+        int ufoIndex = Random.Range(0, ufoPrefabs.Length); // randomizes array
+        Instantiate(ufoPrefabs[ufoIndex], spawnPos, ufoPrefabs[ufoIndex].transform.rotation); // spawns random UFO in random location
     }
 
     private Vector3 GenerateSpawnPosition()

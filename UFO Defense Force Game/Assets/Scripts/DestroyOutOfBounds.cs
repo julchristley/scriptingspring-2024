@@ -11,7 +11,7 @@ public class DestroyOutOfBounds : MonoBehaviour
     void Awake()
     {
        // restarts update method
-       // Time.timeScale = 1;
+       Time.timeScale = 1;
     }
     
     void Start()
@@ -31,7 +31,7 @@ public class DestroyOutOfBounds : MonoBehaviour
             Debug.Log("Game Over!");
             Destroy(gameObject);
             // stops the player from doing anything
-            // Time.timeScale = 0;
+            Time.timeScale = 0;
         }
     }
 }

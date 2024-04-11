@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float horizontalInput;
     public float speed = 16.0f;
-    public float xRange = 20.0f;
+    public float xRange = 10.0f;
     public Transform blaster;
     public GameObject lazer;
     public bool hasPickup = false;
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
             Instantiate(lazer, blaster.transform.position, lazer.transform.rotation);
         }
     }
-    // delete any object that hits the player 
+        // delete any object that hits the player 
     private void OnTriggerEnter(Collider other)
     {
             Destroy(other.gameObject);
