@@ -28,10 +28,13 @@ public class DestroyOutOfBounds : MonoBehaviour
         }  
         else if (transform.position.z < lowBounds)
         {
-            Debug.Log("Game Over!");
             Destroy(gameObject);
-            // stops the player from doing anything
-            Time.timeScale = 0;
+             if ( gameObject.CompareTag("UFO"))
+             {
+              Debug.Log("Game Over!");
+               // stops the player from doing anything
+              Time.timeScale = 0;
+             }
         }
     }
 }

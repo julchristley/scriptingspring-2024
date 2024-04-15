@@ -7,7 +7,10 @@ public class CollisionDetect : MonoBehaviour
    void OnTriggerEnter(Collider other)
    {
 	   // destroys game object and the other game object it hits
-	   Destroy(gameObject);
-	   Destroy(other.gameObject);
+        if (!other.gameObject.CompareTag("Pickup"))
+        {
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
    }
 }

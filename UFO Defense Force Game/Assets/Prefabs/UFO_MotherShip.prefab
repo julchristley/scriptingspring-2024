@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3358212605048450352}
   m_Layer: 0
   m_Name: UFO_MotherShip
-  m_TagString: Untagged
+  m_TagString: UFO
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

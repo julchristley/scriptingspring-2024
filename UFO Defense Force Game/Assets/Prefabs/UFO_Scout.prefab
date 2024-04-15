@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4478055707951036788}
   m_Layer: 0
   m_Name: UFO_Scout
-  m_TagString: Untagged
+  m_TagString: UFO
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
