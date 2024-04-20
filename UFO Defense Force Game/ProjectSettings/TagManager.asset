@@ -6,6 +6,7 @@ TagManager:
   tags:
   - UFO
   - Pickup
+  - Lazer
   layers:
   - Default
   - TransparentFX
