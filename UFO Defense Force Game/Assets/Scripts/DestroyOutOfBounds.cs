@@ -6,7 +6,7 @@ public class DestroyOutOfBounds : MonoBehaviour
 {
     public float topBounds = 30.0f;
     public float lowBounds = -10.0f;
-    // Start is called before the first frame update
+    public GameManager gameManager;
     
     void Awake()
     {
@@ -16,7 +16,7 @@ public class DestroyOutOfBounds : MonoBehaviour
     
     void Start()
     {
-        
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -34,6 +34,7 @@ public class DestroyOutOfBounds : MonoBehaviour
               Debug.Log("Game Over!");
                // stops the player from doing anything
               Time.timeScale = 0;
+              gameManager.isGameOver = true;
              }
         }
     }

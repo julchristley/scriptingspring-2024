@@ -6,7 +6,7 @@ public class CollisionDetect : MonoBehaviour
 {
     public ScoreManager scoreManager;
 
-    public int scoreToGive;
+    public int scoreToGive = 5;
 
     void Start()
     {

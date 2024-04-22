@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject pickupPrefab;
-    public float spawnRange = 22.0f;
+    public float spawnRange = 20.0f;
     private float startDelayPickup = 5;
     private float repeatRate = 8;
    
