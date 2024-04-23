@@ -15,12 +15,6 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreText();
     }
 
-    public void DecreaseScore(int amount)
-    {
-        score -= amount;
-        UpdateScoreText();
-    }
-
     public void UpdateScoreText()
     {
         Debug.Log("Score: "+ score);

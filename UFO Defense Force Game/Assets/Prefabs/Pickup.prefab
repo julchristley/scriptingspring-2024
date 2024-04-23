@@ -135,6 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topBounds: 30
   lowBounds: -15
+  gameManager: {fileID: 0}
+  endSound: {fileID: 0}
 --- !u!114 &3191763203227830880
 MonoBehaviour:
   m_ObjectHideFlags: 0

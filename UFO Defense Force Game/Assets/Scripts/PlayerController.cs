@@ -13,9 +13,15 @@ public class PlayerController : MonoBehaviour
 
     public GameManager gameManager;
 
+    public AudioClip lazerSound;
+    private AudioSource lazerAudio;
+
+    public float pickupSpeed = 19.0f;
+
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        lazerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,16 +49,40 @@ public class PlayerController : MonoBehaviour
         {
             // creates lazerbolt when space bar is pressed
             Instantiate(lazer, blaster.transform.position, lazer.transform.rotation);
+            lazerAudio.PlayOneShot(lazerSound, 1.0f);
         }
+
+        Powerup();
     }
         // delete any object that hits the player 
     private void OnTriggerEnter(Collider other)
     {
             Destroy(other.gameObject);
+
             if (other.CompareTag("Pickup"))
             {
                 hasPickup = true;
                 Debug.Log("Pickup collected");
             }
+
+            if (other.CompareTag("UFO"))
+            {
+                gameManager.isGameOver = true;
+            }
+    }
+    // pickup powerup
+    public void Powerup()
+    {
+        if (hasPickup == true)
+        {
+            transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * pickupSpeed);
+            StartCoroutine(PowerupCountdownRoutine());
+        }
+    }
+
+    IEnumerator PowerupCountdownRoutine()
+    {
+        yield return new WaitForSeconds(7);
+        hasPickup = false;
     }
 }

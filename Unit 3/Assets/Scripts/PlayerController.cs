@@ -4,50 +4,64 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // movement
-    private CharacterController controller;
+
     public float horizontalInput;
     public float verticalInput;
     public float speed = 5.0f;
+    private Rigidbody playerRb;
 
-    // jumping
-    public float jumpForce = 5.0f;
-    public float gravityModifier = 2.0f;
+    public float jumpForce;
+    public float gravityModifier;
     public bool isOnGround = true;
-    public Vector3 moveDirection;
+    private Vector3 jump;
 
     // Start is called before the first frame update
     void Start()
     {
-        // referencing character controller
-        controller = GetComponent<CharacterController>();
+        playerRb = GetComponent<Rigidbody>();
+
+        Physics.gravity *= gravityModifier;
+
+        jump = new Vector3(0.0f, 1.0f, 0.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // player input for movement
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
+
         MovePlayer();
 
-        //jumping
-        if(Input.GetKeyDown(KeyCode.Space) && isOnGround)
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
         {
-            moveDirection.y = jumpForce;
+            playerRb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isOnGround = false;
         }
     }
+
     void MovePlayer()
     {
-        Vector3 moveDirection = new Vector3(horizontalInput, 0.0f, verticalInput).normalized;
-        controller.SimpleMove(moveDirection * speed);
+      // applying movement through Rigidbody
+      playerRb.AddForce(Vector3.forward * speed *  verticalInput);
+      playerRb.AddForce(Vector3.right * speed * horizontalInput);
     }
+
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
         }
     }
+
+    /*
+    void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = false;
+        }
+    }
+    */
 }

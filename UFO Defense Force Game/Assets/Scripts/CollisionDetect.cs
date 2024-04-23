@@ -8,25 +8,35 @@ public class CollisionDetect : MonoBehaviour
 
     public int scoreToGive = 5;
 
+    public AudioClip destroySound;
+    private AudioSource destroyAudio;
+
     void Start()
     {
         scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        destroyAudio = GetComponent<AudioSource>();
     }
 
     public void OnTriggerEnter(Collider other)
     {
-	    // destroys game object and the other game object it hits
-        if (!other.gameObject.CompareTag("Pickup"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
             Destroy(other.gameObject);
         }
 
         if (other.gameObject.CompareTag("Lazer"))
         {
-            Debug.Log("scoring??");
-            // increase score
+            destroyAudio.PlayOneShot(destroySound, 1.0f);
+            StartCoroutine(DestroyAfterSound());
             scoreManager.IncreaseScore(scoreToGive);
+            Destroy(other.gameObject);
+        }
+
+        // this makes sure the UFO sticks around long enough to play the destroySound effect.
+        IEnumerator DestroyAfterSound()
+        {
+            yield return new WaitForSeconds(destroySound.length * 0.8f);
+            Destroy(gameObject);  // destroys UFO
         }
     }
 }
