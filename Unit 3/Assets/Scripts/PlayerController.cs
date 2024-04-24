@@ -7,13 +7,17 @@ public class PlayerController : MonoBehaviour
 
     public float horizontalInput;
     public float verticalInput;
-    public float speed = 5.0f;
+    public float speed = 8.0f;
     private Rigidbody playerRb;
 
     public float jumpForce;
     public float gravityModifier;
     public bool isOnGround = true;
     private Vector3 jump;
+
+    public float xRange = 11.5f;
+    public float zRange = 11.5f;
+    public float sprintSpeed = 12.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +42,9 @@ public class PlayerController : MonoBehaviour
             playerRb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isOnGround = false;
         }
+
+        ConstrainPlayerPosition();
+        Sprint();
     }
 
     void MovePlayer()
@@ -49,19 +56,43 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Obstacle"))
         {
             isOnGround = true;
         }
     }
 
-    /*
-    void OnCollisionExit(Collision other)
+    void ConstrainPlayerPosition()
     {
-        if (other.gameObject.CompareTag("Ground"))
+      // right
+      if (transform.position.x > xRange)
+      {
+       transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+      }
+      // left
+      if (transform.position.x < -xRange)
+      {
+       transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+      }
+      // top
+      if (transform.position.z > zRange)
+      {
+       transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
+      }
+       // bottom
+      if (transform.position.z < -zRange)
+      {
+       transform.position = new Vector3(transform.position.x, transform.position.y, -zRange);
+      }
+    }
+
+    void Sprint()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            isOnGround = false;
+         // transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * sprintSpeed);
+         Vector3 sprinting = new Vector3(horizontalInput * sprintSpeed, 0f, verticalInput * sprintSpeed);
+         playerRb.velocity = sprinting;
         }
     }
-    */
 }
