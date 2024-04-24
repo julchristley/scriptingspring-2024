@@ -269,10 +269,12 @@ MonoBehaviour:
   isCrouching: 0
   xRange: 11.5
   zRange: 11.5
-  speed: 8
-  resetSpeed: 8
-  sprintSpeed: 12
-  crouchSpeed: 4
+  speed: 10
+  resetSpeed: 10
+  sprintSpeed: 13
+  crouchSpeed: 6
+  mouseSpeed: 5
+  mouseX: 0
 --- !u!65 &696671992
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -566,7 +568,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5365889, y: -0, z: -0, w: 0.84384376}
-  m_LocalPosition: {x: -0.07, y: 17.85, z: -11.44}
+  m_LocalPosition: {x: -0.06999993, y: 17.85, z: -11.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
