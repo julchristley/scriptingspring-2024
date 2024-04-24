@@ -7,17 +7,26 @@ public class PlayerController : MonoBehaviour
 
     public float horizontalInput;
     public float verticalInput;
-    public float speed = 8.0f;
     private Rigidbody playerRb;
-
-    public float jumpForce;
     public float gravityModifier;
+
     public bool isOnGround = true;
+    public float jumpForce;
     private Vector3 jump;
+    public bool isCrouching = false;
 
     public float xRange = 11.5f;
     public float zRange = 11.5f;
+
+    public float speed = 8.0f;
+    public float resetSpeed = 8.0f;
     public float sprintSpeed = 12.0f;
+    public float crouchSpeed = 4.0f;
+
+    private Vector3 defaultColliderSize;
+    private Vector3 defaultColliderCenter;
+    
+    
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +36,10 @@ public class PlayerController : MonoBehaviour
         Physics.gravity *= gravityModifier;
 
         jump = new Vector3(0.0f, 1.0f, 0.0f);
+
+        BoxCollider collider = GetComponent<BoxCollider>();
+        defaultColliderSize = collider.size;
+        defaultColliderCenter = collider.center;
     }
 
     // Update is called once per frame
@@ -37,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
         MovePlayer();
 
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !isCrouching)
         {
             playerRb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isOnGround = false;
@@ -45,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
         ConstrainPlayerPosition();
         Sprint();
+        Crouch();
     }
 
     void MovePlayer()
@@ -88,11 +102,31 @@ public class PlayerController : MonoBehaviour
 
     void Sprint()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && !isCrouching)
         {
-         // transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * sprintSpeed);
          Vector3 sprinting = new Vector3(horizontalInput * sprintSpeed, 0f, verticalInput * sprintSpeed);
          playerRb.velocity = sprinting;
         }
+    }
+
+    void Crouch()
+    {
+      if (Input.GetKeyDown(KeyCode.LeftControl) && !isCrouching)
+      {
+          isCrouching = true;
+          speed = crouchSpeed;
+          BoxCollider collider = GetComponent<BoxCollider>();
+          collider.size = new Vector3(collider.size.x, collider.size.y / 2.0f, collider.size.z);
+          collider.center = new Vector3(collider.center.x, collider.center.y / 2.0f, collider.center.z);
+      }
+      
+       else if (Input.GetKeyUp(KeyCode.LeftControl) && isCrouching)
+      {
+          isCrouching = false;
+          speed = resetSpeed;
+          BoxCollider collider = GetComponent<BoxCollider>();
+          collider.size = defaultColliderSize;
+          collider.center = defaultColliderCenter;
+      }
     }
 }
