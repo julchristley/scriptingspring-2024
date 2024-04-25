@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // player movement
-    public float speed = 4.0f;
-    public float horizontalInput;
-    public float verticalInput;
+    [SerializeField] float speed = 4.0f;
+    private float horizontalInput;
+    private float verticalInput;
     private Rigidbody playerRb;
 
     // player constraints

@@ -7,10 +7,10 @@ public class SpawnManager : MonoBehaviour
      public GameObject ghostPrefab ; 
 
     //where to spawn
-    private float spawnPosX = -8.0f;
-    private float spawnPosY = 0.6f;
-    private float spawnPosMinZ = -3.8f;
-    private float spawnPosMaxZ = -5.8f;
+    [SerializeField] float spawnPosX = -8.0f;
+    [SerializeField] float spawnPosY = 0.6f;
+    [SerializeField] float spawnPosMinZ = -3.8f;
+    [SerializeField] float spawnPosMaxZ = -5.8f;
 
     public int waveNumber = 2;
     public int ghostCount;

@@ -8,20 +8,20 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     public float verticalInput;
     private Rigidbody playerRb;
-    public float gravityModifier;
+    [SerializeField] private float gravityModifier;
 
     public bool isOnGround = true;
-    public float jumpForce;
+    [SerializeField] float jumpForce;
     private Vector3 jump;
     public bool isCrouching = false;
 
     public float xRange = 11.5f;
     public float zRange = 11.5f;
 
-    public float speed = 8.0f;
-    public float resetSpeed = 8.0f;
-    public float sprintSpeed = 12.0f;
-    public float crouchSpeed = 4.0f;
+    [SerializeField] public float speed = 8.0f;
+    [SerializeField] float resetSpeed = 8.0f;
+    [SerializeField] float sprintSpeed = 12.0f;
+    [SerializeField] float crouchSpeed = 4.0f;
     private float moveSpeed;
 
     // for crouching

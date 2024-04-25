@@ -10,11 +10,11 @@ public class SpawnManager : MonoBehaviour
     private float repeatRate = 8;
    
     public GameObject [] ufoPrefabs; // array for UFO ships
-    private float spawnRangeX = 20f;
-    private float spawnPosZ = 20f;
+    [SerializeField] float spawnRangeX = 20f;
+    [SerializeField] float spawnPosZ = 20f;
 
     private float startDelay = 2f;
-    private float spawnInterval = 1.5f;
+    [SerializeField] float spawnInterval = 1.5f;
     
 
     // Start is called before the first frame update

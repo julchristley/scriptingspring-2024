@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float horizontalInput;
-    public float speed = 16.0f;
+    [SerializeField] float speed = 16.0f;
     public float xRange = 10.0f;
     public Transform blaster;
     public GameObject lazer;
